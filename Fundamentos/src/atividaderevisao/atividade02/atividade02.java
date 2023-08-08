@@ -1,4 +1,4 @@
-package atividaderevisao;
+package atividaderevisao.atividade02;
 
 import java.util.Scanner;
 
@@ -19,7 +19,7 @@ public class atividade02 {
         Scanner entrada = new Scanner(System.in);
         
         System.out.print("Nome: ");
-        String nomeProduto = entrada.next();
+        String nomeProduto = entrada.nextLine();
         
         System.out.print("Valor: ");
         double valorProduto = entrada.nextDouble();
@@ -54,11 +54,11 @@ public class atividade02 {
 
             if (qtdeParcelas == 1) {
                 // Crédito a vista
-                resumoCredito = String.format("Produto: %s, Valor: %2.f, Qtde: %d, Total: %2.f", 
+                resumoCredito = String.format("Produto: %s, Valor: %.2f, Qtde: %d, Total: %.2f", 
                             nomeProduto, valorProduto, qtdeProduto, valorTotal);
             } else if (qtdeParcelas > 1) {
                 // Crédito parcelado
-                resumoCredito = String.format("Produto: %s, Valor: %2.f, Qtde: %d, Total: %2.f, Qtde parcelas: %d, Valor por parcela: %2.f", 
+                resumoCredito = String.format("Produto: %s, Valor: %.2f, Qtde: %d, Total: %.2f, Qtde parcelas: %d, Valor por parcela: %.2f", 
                             nomeProduto, valorProduto, qtdeProduto, valorTotal, qtdeParcelas, valorParcela);
             }
 
@@ -70,16 +70,16 @@ public class atividade02 {
 
             if (valorTotal <= 100) {
                 // desconto 3%
-                desconto = valorTotal * (3 / 100);
+                desconto = valorTotal * 0.03;
             } else if (valorTotal > 100) {
                 // desconto 5%
-                desconto = valorTotal * (5 / 100);
+                desconto = valorTotal * 0.05;
             }
 
             // Cálculo para pagamento no débito
             double valorFinalProduto = valorTotal - desconto;
 
-            String resumoDebito = String.format("Produto: %s, Valor: %2.f, Qtde: %d, Total: %2.f, Total com Desconto: %2.f", 
+            String resumoDebito = String.format("Produto: %s, Valor: %.2f, Qtde: %d, Total: %.2f, Total com Desconto: %.2f", 
                             nomeProduto, valorProduto, qtdeProduto, valorTotal, valorFinalProduto);
 
             System.out.println("Segue um resumo da sua compra no Débito");
