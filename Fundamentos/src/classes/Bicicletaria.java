@@ -19,11 +19,12 @@ public class Bicicletaria {
         
         System.out.println("-------------------------------------------------");
         
-        Carro gol = new Carro("Gol", "Azul");
-        Carro escort = new Carro("Escort", "Ford", "Azul", 1992, 4);
+        Carro gol = new Carro("Gol", CorEnum.AZUL);
+        Carro escort = new Carro("Escort", "Ford", CorEnum.CINZA, 1992, 4);
         
-        gol.engatarMarcha(1);
-        gol.engatarMarcha(2);
+        gol.trocarDeMarcha(MarchaEnum.PRIMEIRA_MARCHA);
+        gol.trocarDeMarcha(MarchaEnum.SEGUNDA_MARCHA);
+        gol.trocarDeMarcha(MarchaEnum.QUARTA_MARCHA);
         
         System.out.println(gol);
         System.out.println(escort);
