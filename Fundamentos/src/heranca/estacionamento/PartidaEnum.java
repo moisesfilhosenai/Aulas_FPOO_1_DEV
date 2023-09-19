@@ -1,4 +1,4 @@
-package heranca;
+package heranca.estacionamento;
 
 public enum PartidaEnum {
     ELETRICA("Partida elétrica"),

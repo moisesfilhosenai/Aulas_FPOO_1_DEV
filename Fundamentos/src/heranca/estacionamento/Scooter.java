@@ -1,4 +1,4 @@
-package heranca;
+package heranca.estacionamento;
 
 public class Scooter extends Veiculo {
     private int potenciaBateria;

@@ -1,4 +1,4 @@
-package heranca;
+package heranca.estacionamento;
 
 import java.io.PrintStream;
 import java.io.UnsupportedEncodingException;

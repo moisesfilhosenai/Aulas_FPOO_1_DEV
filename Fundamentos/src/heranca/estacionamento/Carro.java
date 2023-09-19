@@ -1,4 +1,4 @@
-package heranca;
+package heranca.estacionamento;
 
 public class Carro extends Veiculo {
     private int qtdePortas;
