@@ -1,11 +1,15 @@
+
 package enumeracao;
 
+/**
+ *
+ * @author Professor
+ */
 public class Usuario {
     private String nome;
     private String email;
     private boolean ativo;
-    // private int tipo; // 0 comum, 1 tecnico, 2 administrador
-    private TipoUsuarioEnum tipo; // 0 comum, 1 tecnico, 2 administrador
+    private TipoUsuarioEnum tipo;
 
     public Usuario(String nome, String email, boolean ativo, TipoUsuarioEnum tipo) {
         this.nome = nome;
@@ -14,7 +18,11 @@ public class Usuario {
         this.tipo = tipo;
     }
 
+    @Override
     public String toString() {
-        return "Nome: " + this.nome + " Email: " + this.email + " Ativo: " + this.ativo + " Tipo: " + this.tipo;
+        return "Usuario{" + "nome=" + nome + ", email=" + email + ", ativo=" + ativo + ", tipo=" + tipo + '}';
     }
+    
+    
+    
 }

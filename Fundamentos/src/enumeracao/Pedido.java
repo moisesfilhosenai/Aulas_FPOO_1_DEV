@@ -1,21 +1,28 @@
 package enumeracao;
 
+/**
+ *
+ * @author Professor
+ */
 public class Pedido {
     private String descricao;
     private double valor;
-    private StatusEnum status;
+    private String status;
 
-    public Pedido(String descricao, double valor, StatusEnum status) {
+    public Pedido(String descricao, double valor, String status) {
         this.descricao = descricao;
         this.valor = valor;
         this.status = status;
     }
 
-    public void setStatus(StatusEnum status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
+    @Override
     public String toString() {
-        return "Descrição: " + this.descricao + " Valor: " + this.valor + " Status: " + this.status;
+        return "Pedido{" + "descricao=" + descricao + ", valor=" + valor + ", status=" + status + '}';
     }
+    
+    
 }

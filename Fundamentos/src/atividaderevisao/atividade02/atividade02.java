@@ -2,89 +2,77 @@ package atividaderevisao.atividade02;
 
 import java.util.Scanner;
 
+
 public class atividade02 {
     public static void main(String[] args) {
-        /*
-         * Escreva um programa que pergunte ao usuário o nome, valor, quantidade de um determinado produto e calcule o 
-         * valor total. Também deverá perguntar ao usuário a forma de pagamento, considere "D" sendo débito e "C" sendo crédito. 
-         * Caso a compra seja no débito aplicar desconto de 5% se o valor total da compra for até R$ 100,00. 
-         * Caso o valor total da compra for mais que R$ 100,00 aplicar desconto de 3%. 
-         * Se a compra foi parcelada perguntar o número de parcelas e ao final exibir as 
-         * informações: nome, valor, qtde e total do produto, para venda á vista colocar o valor com desconto, 
-         * para venda a prazo colocar o valor da parcela.
+        /**
+         * 2) Escreva um programa que pergunte ao usuário o nome, 
+         * valor, quantidade de um determinado produto e calcule 
+         * o valor total. Também deverá perguntar ao usuário a 
+         * forma de pagamento, considere "D" sendo débito e "C" 
+         * sendo crédito. Caso a compra seja no débito aplicar 
+         * desconto de 5% se o valor total da compra for até 
+         * R$ 100,00. Caso o valor total da compra for mais que 
+         * R$ 100,00 aplicar desconto de 3%. Se a compra foi 
+         * parcelada perguntar o número de parcelas e ao final 
+         * exibir as informações: nome, valor, qtde e total do 
+         * produto, para venda á vista colocar o valor com 
+         * desconto, para venda a prazo colocar o valor da parcela.
          */
-        System.out.println("--- Caluladora de Desconto de Produtos ---");
-        System.out.println("Por favor digite as informações do Produto: ");
-
+        System.out.println("Boa tarde vendedor preciso do produto");
         Scanner entrada = new Scanner(System.in);
+        String nome = entrada.nextLine();
         
-        System.out.print("Nome: ");
-        String nomeProduto = entrada.nextLine();
+        System.out.println("Digite o valor ");
+        double valor = entrada.nextDouble();
         
-        System.out.print("Valor: ");
-        double valorProduto = entrada.nextDouble();
-
-        System.out.print("Quantidade: ");
-        int qtdeProduto = entrada.nextInt();
-
-        double valorTotal = qtdeProduto * valorProduto;
-
-        System.out.print("Qual a forma de pagamento, utilize D ou d (débito), C ou c (crédito): ");
-        String formaPagamento = entrada.next();
-
-        if (formaPagamento.equalsIgnoreCase("C")) {
-
-            int qtdeParcelas = 1;
-
-            System.out.println("Deseja parcelar sua compra ? S ou s (Sim), N ou n (Não): ");
-            String parcelar = entrada.next();
-
-            if (parcelar.equalsIgnoreCase("S")) {
-
-                System.out.println("Qual a quantidade de parcelas ? ");
-                qtdeParcelas = entrada.nextInt();
-            }
-
-            // Cálculo para pagamento no crédito
-            double valorParcela = valorTotal / qtdeParcelas;
-
-            System.out.println("Segue um resumo da sua compra no Crédito");
-
-            String resumoCredito = "";
-
-            if (qtdeParcelas == 1) {
-                // Crédito a vista
-                resumoCredito = String.format("Produto: %s, Valor: %.2f, Qtde: %d, Total: %.2f", 
-                            nomeProduto, valorProduto, qtdeProduto, valorTotal);
-            } else if (qtdeParcelas > 1) {
-                // Crédito parcelado
-                resumoCredito = String.format("Produto: %s, Valor: %.2f, Qtde: %d, Total: %.2f, Qtde parcelas: %d, Valor por parcela: %.2f", 
-                            nomeProduto, valorProduto, qtdeProduto, valorTotal, qtdeParcelas, valorParcela);
-            }
-
-            System.out.println(resumoCredito);
-
-        }else if (formaPagamento.equalsIgnoreCase("D")) {
+        System.out.println("Digite a qtde ");
+        int qtde = entrada.nextInt();
+        
+        Produto celular = new Produto(nome, 
+                valor, qtde);
+        System.out.println("Qual forma de pagamento 1-credito ou 2-debito ");
+        int formaPagamento = entrada.nextInt();
+        
+        if (formaPagamento == 2) {
+            // tem desconto
+            double totalComDesconto = 0.0;
             
-            double desconto = 0;
-
-            if (valorTotal <= 100) {
-                // desconto 3%
-                desconto = valorTotal * 0.03;
-            } else if (valorTotal > 100) {
-                // desconto 5%
-                desconto = valorTotal * 0.05;
+            if (celular.getTotal() <= 100.00) {
+                // desconto de 5%
+                totalComDesconto = celular.getTotal() - (celular.getTotal() * 0.05);
+            } else {
+                // desconto de 3%
+                totalComDesconto = celular.getTotal() - (celular.getTotal() * 0.03);
             }
-
-            // Cálculo para pagamento no débito
-            double valorFinalProduto = valorTotal - desconto;
-
-            String resumoDebito = String.format("Produto: %s, Valor: %.2f, Qtde: %d, Total: %.2f, Total com Desconto: %.2f", 
-                            nomeProduto, valorProduto, qtdeProduto, valorTotal, valorFinalProduto);
-
-            System.out.println("Segue um resumo da sua compra no Débito");
-            System.out.println(resumoDebito);
+            System.out.println("Informacoes da compra");
+            System.out.println("Nome do produto: " + celular.getNome());
+            System.out.println("Valor unitario do produto " + celular.getValor());
+            System.out.println("Total sem desconto " + celular.getTotal());
+            System.out.println("Total com desconto " + totalComDesconto);
+            
+        } else if (formaPagamento == 1) {
+            int numeroDeParcelas = 3;
+            double valorParcela = celular.getTotal() / numeroDeParcelas;
+            
+            System.out.println("Informacoes da compra");
+            System.out.println("Nome do produto: " + celular.getNome());
+            System.out.println("Valor unitario do produto " + celular.getValor());
+            System.out.println("Total sem desconto " + celular.getTotal());
+            System.out.println("Qtde de parcelas " + numeroDeParcelas);
+            System.out.println("Valor Parcela " + valorParcela);
+        } else {
+            System.out.println("Forma de pagamento nao identificada");
         }
         entrada.close();
     }
 }
+
+
+
+
+
+
+
+
+
