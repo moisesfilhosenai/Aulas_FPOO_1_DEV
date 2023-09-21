@@ -1,22 +1,30 @@
 package atividaderevisao.atividade01;
 
 import java.util.Scanner;
-import java.lang.Math;
+
 
 public class atividade01 {
     public static void main(String[] args) {
-        /*
-         * Escreva um programa para calcular a área do círculo, o programa deverá pedir para o usuário digitar o raio.
+        /**
+         * 1) Escreva um programa para calcular a área do círculo, 
+         * o programa deverá pedir para o usuário digitar o raio.
+         * PI * (r*r)
          */
-        System.out.println("--- Caluladora de Círculos ---");
-        System.out.print("Por favor digite o raio do círculo: ");
+        System.out.println("Digite o raio do circulo: ");
         
-        Scanner entrada = new Scanner(System.in);
-        int raio = entrada.nextInt();
+        Scanner entrada = new Scanner(System.in);        
+        double raio = entrada.nextDouble();
+        
+        double PI = Math.PI;
+        double resultado = PI * (raio * raio);
+        System.out.println("A area do circulo e " + resultado);
+        
         entrada.close();
-
-        double resultado = raio * Math.PI;
-        String mensagem = String.format("O raio do círculo é: %.2f", resultado);
-        System.out.println(mensagem);
     }
 }
+
+
+
+
+
+
